@@ -1,0 +1,42 @@
+cd /Desktop/Docker_fore_
+docker build -t slideslam:ziyubuild .
+
+
+
+docker run -it \
+  --name slideslam_container_ziyu \
+  --env TZ=Asia/Shanghai \
+  -v /etc/timezone:/etc/timezone:ro \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v ~/Desktop/Docker_for_SlideSlam/SlideSLAM:/root/slideslam_ws/src \
+  slideslam:ziyubuild /bin/bash
+
+docker start -ai slideslam_container_ziyu
+
+sudo apt update
+sudo apt install software-properties-common
+
+sudo add-apt-repository ppa:borglab/gtsam-release-4.0
+sudo apt update
+
+sudo apt install libgtsam-dev libgtsam-unstable-dev
+
+sudo apt update
+sudo apt install ros-noetic-eigen-conversions
+sudo apt update
+sudo apt install python3-catkin-tools
+sudo apt update
+sudo apt install ros-noetic-eigen-conversions
+sudo apt install libopencv-dev
+sudo apt install ros-noetic-cv-bridge
+sudo apt install libyaml-cpp-dev
+sudo apt install libeigen3-dev
+export CMAKE_PREFIX_PATH=/usr/include/eigen3:$CMAKE_PREFIX_PATH
+sudo apt install libpcl-dev
+sudo apt-get update
+sudo apt install ros-noetic-image-transport
+sudo apt-get update
+sudo apt-get install ros-noetic-tf2-geometry-msgs
+
+
+
